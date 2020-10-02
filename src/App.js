@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from './components/layout/Navbar';
-import Users from './components/users/Users';
+import Breweries from './components/breweries/Breweries';
 import './App.css';
 
 const App = () => (
   <div className='App'>
     <Navbar />
     <div className='container'>
-      <Users />
+      <Breweries />
     </div>
   </div>
 );
