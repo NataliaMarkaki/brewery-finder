@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from './components/layout/Navbar';
-import Breweries from './components/breweries/Breweries';
+import Navbar from './layout/Navbar';
+import Breweries from './breweries/Breweries';
 import './App.css';
 
 const App = () => (
