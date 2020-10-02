@@ -1,17 +1,21 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import BreweryItem from './BreweryItem';
-import { getBreweries } from './../../api/brewery';
+import BreweryContext from '../../context/brewery/breweryContext';
 
 const Breweries = () => {
-  const [ breweries, setBreweries ] = useState([]);
-  useLayoutEffect(() => {
-    const loadBreweries = async () => {
-      const result = await getBreweries();
-      setBreweries(result);
-    };
-    loadBreweries();
+  const breweryContext = useContext(BreweryContext);
+  const { breweries, loading, fetchBreweries } = breweryContext;
+
+  useEffect(() => {
+    fetchBreweries();
+    // eslint-disable-next-line
   }, []);
-  return <div style={breweryStyle}>{breweries.map((brewery, idx) => <BreweryItem key={idx} {...brewery} />)}</div>;
+
+  return (
+    !loading && (
+      <div style={breweryStyle}>{breweries.map((brewery, idx) => <BreweryItem key={idx} {...brewery} />)}</div>
+    )
+  );
 };
 
 const breweryStyle = {
