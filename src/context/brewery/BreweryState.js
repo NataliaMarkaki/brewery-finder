@@ -16,7 +16,6 @@ const BreweryState = (props) => {
     setLoading(true);
 
     const result = await getBreweries();
-    console.log(result);
 
     dispatch({
       type: SET_BREWERIES,

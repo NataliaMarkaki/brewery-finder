@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import BreweryItem from './BreweryItem';
 import BreweryContext from '../../context/brewery/breweryContext';
+import Spinner from '../layout/Spinner';
 
 const Breweries = () => {
   const breweryContext = useContext(BreweryContext);
@@ -11,10 +12,10 @@ const Breweries = () => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    !loading && (
-      <div style={breweryStyle}>{breweries.map((brewery, idx) => <BreweryItem key={idx} {...brewery} />)}</div>
-    )
+  return loading ? (
+    <Spinner />
+  ) : (
+    <div style={breweryStyle}>{breweries.map((brewery, idx) => <BreweryItem key={idx} {...brewery} />)}</div>
   );
 };
 
