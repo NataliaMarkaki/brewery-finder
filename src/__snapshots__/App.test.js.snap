@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders app 1`] = `
+<body>
+  <div>
+    <div
+      class="App"
+    >
+      <nav
+        class="navbar bg-primary"
+      >
+        <h1>
+          <i
+            class="fas fa-beer"
+          />
+           
+          Brewery Finder
+        </h1>
+      </nav>
+      <div
+        class="container"
+      >
+        <div
+          style="display: grid; grid-template-columns: repeat(3, 1fr);"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;
