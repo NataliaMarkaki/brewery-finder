@@ -10,7 +10,7 @@ const BreweryItem = ({ name = "", id }) => {
       <h3> {name} </h3>
 
       <div>
-        <Link to='/brewery' onClick={() => setSelectedBrewery(id)}>
+        <Link to={`/brewery/${id}`} onClick={() => setSelectedBrewery(id)}>
           ...more
         </Link>
       </div>

@@ -24,7 +24,7 @@ export default (state, action) => {
       return {
         ...state,
         selectedBrewery: state.breweries.find(
-          (brewery) => brewery.id === action.payload
+          (brewery) => String(brewery.id) === action.payload
         ),
       };
 

@@ -18,7 +18,7 @@ const BreweryState = (props) => {
 
   const [state, dispatch] = useReducer(BreweryReducer, initialState);
 
-  const fetchBreweries = async () => {
+  const fetchBreweries = async ({ selectedBrewery = null } = {}) => {
     setLoading(true);
 
     const result = await getBreweries();
@@ -27,6 +27,10 @@ const BreweryState = (props) => {
       type: SET_BREWERIES,
       payload: result,
     });
+
+    if (selectedBrewery) {
+      setSelectedBrewery(selectedBrewery);
+    }
   };
 
   const setLoading = () => dispatch({ type: SET_LOADING });
