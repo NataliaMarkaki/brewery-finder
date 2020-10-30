@@ -1,2 +1,3 @@
-export const SET_LOADING = 'SET_LOADING';
-export const SET_BREWERIES = 'SET_BREWERIES';
+export const SET_LOADING = "SET_LOADING";
+export const SET_BREWERIES = "SET_BREWERIES";
+export const SET_SELECTED_BREWERY = "SET_SELECTED_BREWERY";
