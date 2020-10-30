@@ -1,7 +1,12 @@
 import React, { useReducer } from "react";
 import BreweryContext from "./breweryContext";
 import BreweryReducer from "./breweryReducer";
-import { SET_LOADING, SET_BREWERIES, SET_SELECTED_BREWERY } from "./types";
+import {
+  SET_LOADING,
+  SET_BREWERIES,
+  SET_SELECTED_BREWERY,
+  RESET_SELECTED_BREWERY,
+} from "./types";
 import { getBreweries } from "./../../api/brewery";
 
 const BreweryState = (props) => {
@@ -27,6 +32,7 @@ const BreweryState = (props) => {
   const setLoading = () => dispatch({ type: SET_LOADING });
   const setSelectedBrewery = (payload) =>
     dispatch({ type: SET_SELECTED_BREWERY, payload });
+  const resetSelectedBrewery = () => dispatch({ type: RESET_SELECTED_BREWERY });
 
   return (
     <BreweryContext.Provider
@@ -36,6 +42,7 @@ const BreweryState = (props) => {
         loading: state.loading,
         fetchBreweries,
         setSelectedBrewery,
+        resetSelectedBrewery,
       }}
     >
       {props.children}

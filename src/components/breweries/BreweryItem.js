@@ -10,7 +10,6 @@ const BreweryItem = ({ name = "", id }) => {
       <h3> {name} </h3>
 
       <div>
-        <i className='fas fa-external-link-square-alt' />
         <Link to='/brewery' onClick={() => setSelectedBrewery(id)}>
           ...more
         </Link>

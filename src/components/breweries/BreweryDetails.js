@@ -1,29 +1,31 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import BreweryContext from "../../context/brewery/breweryContext";
+import { humanise } from "../../libs/humise";
 
 const BreweryDetails = () => {
   const breweryContext = useContext(BreweryContext);
-  const {
-    selectedBrewery: { id, website_url, ...details },
-  } = breweryContext;
-  const humaniseBreweryData = (field) =>
-    field
-      .replace(/^[\s_]+|[\s_]+$/g, "")
-      .replace(/[_\s]+/g, " ")
-      .replace(/^[a-z]/, (m) => m.toUpperCase());
+  const { selectedBrewery, resetSelectedBrewery } = breweryContext;
+  const { website_url = "", ...details } = selectedBrewery || {};
+
+  useEffect(() => {
+    return () => resetSelectedBrewery();
+  }, [resetSelectedBrewery]);
+
   return (
-    <div className='grid-2r'>
+    <div className='grid-2'>
       {Object.keys(details)
-        .filter((field) => !!details[field])
+        .filter((field) => !!details[field] && field !== "id")
         .map((field) => (
           <div key={field}>
-            <h4> {humaniseBreweryData(field)}:</h4> {details[field]}
+            <h4> {humanise(field)}:</h4> {details[field]}
           </div>
         ))}
-      <div>
-        <i className='fas fa-external-link-square-alt' />
-        <a href={website_url}> website </a>
-      </div>
+      {website_url && (
+        <div>
+          <i className='fas fa-external-link-square-alt' />
+          <a href={website_url}> website </a>
+        </div>
+      )}
     </div>
   );
 };

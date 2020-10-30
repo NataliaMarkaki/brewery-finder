@@ -1,4 +1,9 @@
-import { SET_LOADING, SET_BREWERIES, SET_SELECTED_BREWERY } from "./types";
+import {
+  SET_LOADING,
+  SET_BREWERIES,
+  SET_SELECTED_BREWERY,
+  RESET_SELECTED_BREWERY,
+} from "./types";
 
 export default (state, action) => {
   switch (action.type) {
@@ -21,7 +26,12 @@ export default (state, action) => {
         selectedBrewery: state.breweries.find(
           (brewery) => brewery.id === action.payload
         ),
-        loading: false,
+      };
+
+    case RESET_SELECTED_BREWERY:
+      return {
+        ...state,
+        selectedBrewery: null,
       };
 
     default:
